@@ -42,14 +42,14 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Selamat Datang"
+                    android:text="Selamat Datang didalam aplikasi"
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="HALO Kader PDI"
+                    android:text="Mari Berwisata Bersama"
                     android:textColor="@color/white"
                     android:textSize="26sp"
                     android:textStyle="bold" />

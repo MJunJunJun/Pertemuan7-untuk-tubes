@@ -5,10 +5,13 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import com.example.pertemuan7.databinding.ActivityRegisterBinding
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.FirebaseUser
 
 class RegisterActivity : AppCompatActivity() {
-    lateinit var binding : ActivityRegisterBinding
-    lateinit var dbHelper: UserDbHelper
+    private lateinit var binding: ActivityRegisterBinding
+    private lateinit var auth: FirebaseAuth
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityRegisterBinding.inflate(layoutInflater)
@@ -16,29 +19,45 @@ class RegisterActivity : AppCompatActivity() {
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        dbHelper =UserDbHelper(this)
-        binding.btnRegister.setOnClickListener{
+        auth = FirebaseAuth.getInstance()
+
+        binding.btnRegister.setOnClickListener {
             val email = binding.inputEmail.text.toString()
             val password = binding.inputPassword.text.toString()
 
-            if(email.isNotEmpty() && password.isNotEmpty()) {
-                val user = User(email = email, password = password)
-                dbHelper.insertUser(user)
-                Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show()
-                startActivity(intent)
-                finish()
-            }else{
-                Toast.makeText(this,"DATA tidak boleh kosong!!", Toast.LENGTH_SHORT).show()
+            if (email.isNotEmpty() && password.isNotEmpty()) {
+                createAccount(email, password)
+            } else {
+                Toast.makeText(this, "DATA tidak boleh kosong!!", Toast.LENGTH_SHORT).show()
             }
         }
     }
 
+    private fun createAccount(email: String, password: String) {
+        auth.createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this) { task ->
+                if (task.isSuccessful) {
+                    // Registration success, update UI with the signed-in user's information
+                    val user: FirebaseUser? = auth.currentUser
+                    if (user != null) {
+                        Toast.makeText(this, "Register Berhasil", Toast.LENGTH_SHORT).show()
+                        finish()
+                    }
+                } else {
+                    // If registration fails, display a message to the user.
+                    Toast.makeText(baseContext, "Registration failed. ${task.exception?.message}",
+                        Toast.LENGTH_SHORT).show()
+                }
+            }
+    }
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when(item.itemId) {
+        return when (item.itemId) {
             android.R.id.home -> {
-            onBackPressed()
-            true
-            }else -> super.onOptionsItemSelected(item)
+                onBackPressed()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 }

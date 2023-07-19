@@ -6,41 +6,54 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import androidx.room.Room
+import com.google.firebase.database.IgnoreExtraProperties
 
 @Entity(tableName = "tbl_travel")
 class ModelDatabase : Serializable {
-
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "uid")
-    var uid = 0
+    var uid: Int = 0
 
     @ColumnInfo(name = "nama_penumpang")
     lateinit var namaPenumpang: String
 
-    @ColumnInfo(name = "keberangkatan")
-    lateinit var keberangkatan: String
+    @ColumnInfo(name = "telepon")
+    lateinit var telepon: String
 
-    @ColumnInfo(name = "tujuan")
-    lateinit var tujuan: String
+    @ColumnInfo(name = "tempat_wisata")
+    lateinit var tempatWisata: String
 
-    @ColumnInfo(name = "tanggal")
-    lateinit var tanggal: String
+    @ColumnInfo(name = "jumlah_anak")
+    var jumlahAnak: Int = 0
 
-    @ColumnInfo(name = "harga_tiket")
-    var hargaTiket = 0
+    @ColumnInfo(name = "jumlah_dewasa")
+    var jumlahDewasa: Int = 0
 
-    @ColumnInfo(name = "anak_anak")
-    var anakAnak = 0
+    @ColumnInfo(name = "tanggal_berangkat")
+    lateinit var tanggalBerangkat: String
 
-    @ColumnInfo(name = "dewasa")
-    var dewasa = 0
+    @ColumnInfo(name = "total_harga")
+    var totalHarga: Int = 0
 
-    @ColumnInfo(name = "nomor_telepon")
-    lateinit var nomorTelepon: String
+    constructor() {
+        // Default constructor diperlukan untuk Firebase Realtime Database
+    }
 
-    @ColumnInfo(name = "kelas")
-    lateinit var kelas: String
-
-    @ColumnInfo(name = "status")
-    lateinit var status: String
+    constructor(
+        namaPenumpang: String,
+        telepon: String,
+        tempatWisata: String,
+        jumlahAnak: Int,
+        jumlahDewasa: Int,
+        tanggalBerangkat: String,
+        totalHarga: Int
+    ) {
+        this.namaPenumpang = namaPenumpang
+        this.telepon = telepon
+        this.tempatWisata = tempatWisata
+        this.jumlahAnak = jumlahAnak
+        this.jumlahDewasa = jumlahDewasa
+        this.tanggalBerangkat = tanggalBerangkat
+        this.totalHarga = totalHarga
+    }
 }

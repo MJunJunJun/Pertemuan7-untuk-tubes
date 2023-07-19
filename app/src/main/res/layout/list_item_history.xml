@@ -66,21 +66,59 @@
                     android:textSize="18sp"
                     android:textStyle="bold" />
 
+                <!-- TextView untuk menampilkan Tempat Wisata -->
                 <TextView
-                    android:id="@+id/tvHargaTiket"
+                    android:id="@+id/tvTempatWisata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="1 tiket dewasa 1 tiket  anak kecil"
+                    android:text="Tempat Wisata"
                     android:textColor="@color/black"
-                    android:textSize="18sp"
-                    android:textStyle="bold" />
+                    android:textSize="16sp" />
 
+                <!-- TextView untuk menampilkan Jumlah Pengunjung Anak -->
                 <TextView
+                    android:id="@+id/tvJumlahAnak"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Penumpang"
+                    android:text="Jumlah Pengunjung Anak"
                     android:textColor="@color/black"
-                    android:textSize="14sp" />
+                    android:textSize="16sp" />
+
+                <!-- TextView untuk menampilkan Jumlah Pengunjung Dewasa -->
+                <TextView
+                    android:id="@+id/tvJumlahDewasa"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jumlah Pengunjung Dewasa"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- TextView untuk menampilkan Tanggal Berangkat -->
+                <TextView
+                    android:id="@+id/tvTanggalBerangkat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Tanggal Berangkat"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- TextView untuk menampilkan Nomor Telepon -->
+                <TextView
+                    android:id="@+id/tvTelepon"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Nomor Telepon"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
+
+                <!-- TextView untuk menampilkan Total Harga Tiket -->
+                <TextView
+                    android:id="@+id/tvTotalHarga"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Total Harga Tiket"
+                    android:textColor="@color/black"
+                    android:textSize="16sp" />
 
             </LinearLayout>
 
@@ -107,7 +145,7 @@
                     android:id="@+id/tvKodewisata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="BTR"
+                    android:text="Kode Wisata"
                     android:textColor="@color/black"
                     android:textSize="18sp"
                     android:textStyle="bold" />
@@ -116,7 +154,7 @@
                     android:id="@+id/tvWisata"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Baturraden"
+                    android:text="Nama Tempat Wisata"
                     android:textColor="@color/black"
                     android:textSize="16sp" />
 
